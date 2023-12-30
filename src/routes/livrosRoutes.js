@@ -1,7 +1,7 @@
-import express from "express";
-import LivroController from "../controllers/livrosController.js";
+import express from "express"
+import LivroController from "../controllers/livrosController.js"
 
-const router = express.Router();
+const router = express.Router()
 
 router
   .get("/api/livros", LivroController.listarLivros)
@@ -11,4 +11,4 @@ router
   .put("/api/livros/:id", LivroController.atualizarLivro)
   .delete("/api/livros/:id", LivroController.excluirLivro)
 
-export default router;   
+export default router   

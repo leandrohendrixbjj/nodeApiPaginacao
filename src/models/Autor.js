@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 const autorSchema = new mongoose.Schema(
   {
@@ -13,4 +13,4 @@ const autorSchema = new mongoose.Schema(
 
 const autores = mongoose.model("autores", autorSchema)
 
-export default autores;
+export default autores

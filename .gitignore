@@ -1,3 +1,4 @@
 node_modules
 env-presents
 .env
+.eslintrc.json

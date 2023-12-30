@@ -1,7 +1,6 @@
 import mongoose from "mongoose"
+mongoose.connect(process.env.STR_CONNECTION_DB)
 
-mongoose.connect(process.env.STR_CONNECTION_DB);
+let db = mongoose.connection
 
-let db = mongoose.connection;
-
-export default db;
+export default db
