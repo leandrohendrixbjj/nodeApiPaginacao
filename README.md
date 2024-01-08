@@ -12,6 +12,13 @@ npm init @eslint/config
 npx eslint ./src --fix
 npx eslint server.js --fix
 
+=> automatic fix
+add json in ctrl + p => settings
+"editor.codeActionsOnSave": {
+  "source.fixAll.eslint": "explicit"
+}
+
+
 => https://cursos.alura.com.br/course/node-js-buscas-filtros-paginacao-erros-api/task/123699
 
 
