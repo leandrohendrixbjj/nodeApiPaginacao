@@ -1,4 +1,3 @@
-import mongoose from "mongoose"
 import autores from "../models/Autor.js"
 
 class AutorController {
@@ -11,8 +10,7 @@ class AutorController {
         res.status(404).json({ success: false })
 
       res.status(200).json({ success: true, data })
-    } catch (error) {
-      console.log(error)
+    } catch (error) {     
       next(error)
     }
   }
@@ -28,8 +26,7 @@ class AutorController {
 
       res.status(200).json({ success: true, data })
 
-    } catch (error) {
-      console.log(error)
+    } catch (error) {      
       next(error)
     }
   }
@@ -39,8 +36,7 @@ class AutorController {
       let autor = new autores(req.body)
       await autor.save()
       res.status(201).json({ success: true })
-    } catch (error) {
-      console.log(error)
+    } catch (error) {     
       next(error)
     }
   }
@@ -50,8 +46,7 @@ class AutorController {
       const id = req.params.id
       await autores.findByIdAndUpdate(id, { $set: req.body })
       res.status(200).json({ success: true })
-    } catch (error) {
-      console.log(error)
+    } catch (error) {      
       next(error)
     }
   }
@@ -61,8 +56,7 @@ class AutorController {
       const id = req.params.id
       await autores.findByIdAndDelete(id)
       res.status(204).json({ success: true })
-    } catch (error) {
-      console.log(error)
+    } catch (error) {     
       next(error)
     }
   }

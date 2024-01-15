@@ -7,7 +7,6 @@ class LivroController {
       const data = await livros.find().sort({ "_id": -1 })
       res.status(200).json({ success: true, data })
     } catch (error) {
-      console.log(error)
       next(error)
     }
   }
@@ -15,10 +14,9 @@ class LivroController {
   static listarLivroPorId = async (req, res, next) => {
     try {
       const id = req.params.id
-      const data = await livros.findById(id).populate('autor', 'nome')
+      const data = await livros.findById(id).populate("autor", "nome")
       res.status(200).json({ success: true, data })
     } catch (error) {
-      console.log(error)
       next(error)
     }
   }
@@ -29,7 +27,6 @@ class LivroController {
       await livro.save()
       res.status(201).json({ success: true })
     } catch (error) {
-      console.log(error)
       next(error)
     }
   }
@@ -40,7 +37,7 @@ class LivroController {
       await livros.findByIdAndUpdate(id, { $set: req.body })
       res.status(200).send({ message: "Livro atualizado com sucesso" })
     } catch (error) {
-      console.log(error)
+      next(error)
     }
   }
 
@@ -49,8 +46,7 @@ class LivroController {
       const id = req.params.id
       await livros.findByIdAndDelete(id)
       res.status(200).send({ message: "Livro removido com sucesso" })
-    } catch (error) {
-      console.log(error)
+    } catch (error) {      
       next(error)
     }
   }
@@ -60,8 +56,7 @@ class LivroController {
       const editora = req.query.editora
       const data = await livros.find({ "editora": editora }, {})
       res.status(200).json({ success: true, data })
-    } catch (error) {
-      console.log(error)
+    } catch (error) {     
       next(error)
     }
   }
