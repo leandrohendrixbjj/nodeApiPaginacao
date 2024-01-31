@@ -27,6 +27,7 @@ class LivroController {
       await livro.save()
       res.status(201).json({ success: true })
     } catch (error) {
+      console.log(error)
       next(error)
     }
   }
@@ -46,7 +47,7 @@ class LivroController {
       const id = req.params.id
       await livros.findByIdAndDelete(id)
       res.status(200).send({ message: "Livro removido com sucesso" })
-    } catch (error) {      
+    } catch (error) {
       next(error)
     }
   }
@@ -56,7 +57,7 @@ class LivroController {
       const editora = req.query.editora
       const data = await livros.find({ "editora": editora }, {})
       res.status(200).json({ success: true, data })
-    } catch (error) {     
+    } catch (error) {
       next(error)
     }
   }
