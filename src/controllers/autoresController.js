@@ -1,17 +1,17 @@
-import autores from "../models/Autor.js"
+import { autores } from "../models/index.js"
 
 class AutorController {
 
   static listarAutores = async (req, res, next) => {
     try {
-      
+
       const data = await autores.find()
 
       if (!data)
         res.status(404).json({ success: false })
 
       res.status(200).json({ success: true, data })
-    } catch (error) {     
+    } catch (error) {
       next(error)
     }
   }
@@ -27,7 +27,7 @@ class AutorController {
 
       res.status(200).json({ success: true, data })
 
-    } catch (error) {      
+    } catch (error) {
       next(error)
     }
   }
@@ -37,7 +37,7 @@ class AutorController {
       let autor = new autores(req.body)
       await autor.save()
       res.status(201).json({ success: true })
-    } catch (error) {     
+    } catch (error) {
       next(error)
     }
   }
@@ -47,7 +47,7 @@ class AutorController {
       const id = req.params.id
       await autores.findByIdAndUpdate(id, { $set: req.body })
       res.status(200).json({ success: true })
-    } catch (error) {      
+    } catch (error) {
       next(error)
     }
   }
@@ -57,7 +57,7 @@ class AutorController {
       const id = req.params.id
       await autores.findByIdAndDelete(id)
       res.status(204).json({ success: true })
-    } catch (error) {     
+    } catch (error) {
       next(error)
     }
   }
