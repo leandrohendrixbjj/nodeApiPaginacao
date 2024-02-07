@@ -57,8 +57,8 @@ class LivroController {
       const { editora, titulo } = req.query
       const filters = {}
 
-      if (editora) filters.editora = editora
-      if (titulo) filters.titulo = titulo
+      if (editora) filters.editora = { $regex: editora, $options: "i" }
+      if (titulo) filters.titulo = { $regex: titulo, $options: "i" }
 
       const data = await livros.find(filters, {})
       res.status(200).json({ success: true, data })
