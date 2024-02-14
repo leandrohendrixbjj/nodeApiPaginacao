@@ -1,4 +1,4 @@
-import { livros } from "../models/index.js"
+import { livros, autores } from "../models/index.js"
 
 class LivroController {
 
@@ -54,25 +54,32 @@ class LivroController {
 
   static listarLivroPorFiltro = async (req, res, next) => {
     try {
-      const { editora, titulo, minPaginas, maxPaginas } = req.query
+      const { editora, titulo, minPaginas, maxPaginas, nomeAutor } = req.query
       const filters = {}
 
       if (editora) filters.editora = { $regex: editora, $options: "i" }
       if (titulo) filters.titulo = { $regex: titulo, $options: "i" }
 
-      if (Number(minPaginas) > Number(maxPaginas))
+      if (Number(minPaginas) > Number(maxPaginas)) {
         res.status(404).json({ success: false, message: "minPagina deve ser menor que maxPagina" })
+      }
 
       if (minPaginas && maxPaginas) {
         filters.numeroPaginas = { $gte: minPaginas, $lte: maxPaginas }
       }
 
-      const data = await livros.find(filters, {})
+      if (nomeAutor) {
+        const autor = await autores.findOne({ "nome": nomeAutor })
+        filters.autor = { $eq: autor._id }
+      }
+
+      const data = await livros.find(filters, {}).populate("autor")
       res.status(200).json({ success: true, data })
     } catch (error) {
       next(error)
     }
   }
 }
+
 
 export default LivroController
