@@ -70,6 +70,9 @@ class LivroController {
 
       if (nomeAutor) {
         const autor = await autores.findOne({ "nome": nomeAutor })
+        if (!autor) {
+          res.status(404).json({ success: false, message: "Autor não possui livros" })
+        }
         filters.autor = { $eq: autor._id }
       }
 
