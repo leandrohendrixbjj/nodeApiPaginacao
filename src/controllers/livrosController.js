@@ -4,8 +4,25 @@ class LivroController {
 
   static listarLivros = async (req, res, next) => {
     try {
-      const data = await livros.find().sort({ "_id": -1 })
-      res.status(200).json({ success: true, data })
+      let { limit = 5, page = 1 } = req.query
+
+      parseInt(limit)
+      parseInt(page)
+
+      const content = [
+        {
+          meta: [
+            { limit, page }
+          ]
+        },
+        {
+          data: await livros.find()
+            .skip((page - 1) * limit)
+            .limit(limit)
+            .sort({ "_id": -1 })
+        }
+      ]
+      res.status(200).json({ success: true, content })
     } catch (error) {
       next(error)
     }
