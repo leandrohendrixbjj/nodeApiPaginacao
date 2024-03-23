@@ -1,16 +1,10 @@
 import ServerError from "./ServerError.js"
 
 class ErrorRequest extends ServerError {
-  constructor(message = "Código inválido", status = 400) {
+  constructor() {
     super()
-    this.message = message
-    this.status = status
-  }
-
-  enviarResposta(res) {
-    res.status(this.status)
-      .send({ success: false, mesage: this.message })
-  }
+    this.message = "Código inválido"
+    this.status = 400
+  }  
 }
-
 export default ErrorRequest

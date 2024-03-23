@@ -5,5 +5,4 @@ class PageNotFound extends ServerError {
     super("Página não encontrada", 404)
   }
 }
-
 export default PageNotFound

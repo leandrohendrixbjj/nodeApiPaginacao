@@ -5,10 +5,8 @@ class ServerError extends Error {
     this.status = status
   }
 
-  enviarResposta(res) {
+  sendRequest(res) {
     res.status(this.status).send({ success: false, message: this.message })
   }
-
 }
-
 export default ServerError

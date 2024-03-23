@@ -8,13 +8,13 @@ import PageNotFound from "../erros/PageNotFound.js"
 export default (error, req, res, next) => {
   console.log(error)
   if (error instanceof mongoose.Error.CastError) {
-    new ErrorRequest().enviarResposta(res)
+    new ErrorRequest().sendRequest(res)
   } else if (error instanceof mongoose.Error.ValidationError) {
-    new ErrorValidation(error).enviarResposta(res)
+    new ErrorValidation(error).sendRequest(res)
   } else if (error instanceof PageNotFound)
-    new PageNotFound(error).enviarResposta(res)
+    new PageNotFound(error).sendRequest(res)
   else {
-    new ServerError().enviarResposta(res)
+    new ServerError().sendRequest(res)
   }
 }
 
