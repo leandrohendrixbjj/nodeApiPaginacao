@@ -5,7 +5,7 @@ import ErrorValidation from "../erros/ErrorValidation.js"
 import NaoEncontrado from "../erros/NaoEncontrado.js"
 
 // eslint-disable-next-line no-unused-vars
-function manipulaErros(error, req, res, next) {
+export default (error, req, res, next) => {
   console.log(error)
   if (error instanceof mongoose.Error.CastError) {
     new ErrorRequest().enviarResposta(res)
@@ -18,4 +18,3 @@ function manipulaErros(error, req, res, next) {
   }
 }
 
-export default manipulaErros

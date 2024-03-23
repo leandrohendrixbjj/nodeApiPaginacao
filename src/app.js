@@ -2,7 +2,7 @@ console.clear()
 import express from "express"
 import db from "./config/dbConnect.js"
 import routes from "./routes/index.js"
-import manipulaErros from "./middlewares/manipulaErros.js"
+import showErrors from "./middlewares/showErrors.js"
 import manipulador404 from "./middlewares/manipulador404.js"
 
 db.on("error", console.log.bind(console, "Erro de conexão"))
@@ -15,7 +15,7 @@ const app = express()
 app.use(express.json())
 routes(app)
 app.use(manipulador404)
-app.use(manipulaErros)
+app.use(showErrors)
 
 
 
