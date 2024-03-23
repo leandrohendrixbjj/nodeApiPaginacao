@@ -1,11 +1,11 @@
-async function filters(req, res, next) {
+export default async (req, res, next) => {
   try {
     let {
       limit,
       page,
       orderBy,
       order
-    } = req.query    
+    } = req.query
 
     const content = [
       {
@@ -26,5 +26,3 @@ async function filters(req, res, next) {
     next(error)
   }
 }
-
-export default filters

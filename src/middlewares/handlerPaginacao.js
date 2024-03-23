@@ -2,7 +2,7 @@ export default (req, res, next) => {
   let {
     limit,
     page,
-    orderBy,
+    orderBy = '_id',
     order = 'asc'
   } = req.query
 
@@ -21,9 +21,7 @@ function setData(value) {
 
 function setOrderBy(req, value) {
   const columns = Object.keys(req.result.schema.obj)
-  const data = columns.find(column => column == value)
-
-  if (!data) return '_id'
+  const data = columns.find(column => column == value)  
   return value
 }
 
