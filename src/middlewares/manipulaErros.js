@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import ErrorServer from "../erros/ErrorServer.js"
+import ServerError from "../erros/ServerError.js"
 import ErrorRequest from "../erros/ErrorRequest.js"
 import ErrorValidation from "../erros/ErrorValidation.js"
 import NaoEncontrado from "../erros/NaoEncontrado.js"
@@ -14,7 +14,7 @@ function manipulaErros(error, req, res, next) {
   } else if (error instanceof NaoEncontrado)
     new NaoEncontrado(error).enviarResposta(res)
   else {
-    new ErrorServer().enviarResposta(res)
+    new ServerError().enviarResposta(res)
   }
 }
 

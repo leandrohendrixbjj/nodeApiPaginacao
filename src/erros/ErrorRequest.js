@@ -1,6 +1,6 @@
-import ErrorServer from "./ErrorServer.js"
+import ServerError from "./ServerError.js"
 
-class ErrorRequest extends ErrorServer {
+class ErrorRequest extends ServerError {
   constructor(message = "Código inválido", status = 400) {
     super()
     this.message = message

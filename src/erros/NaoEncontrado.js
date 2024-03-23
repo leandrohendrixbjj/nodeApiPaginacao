@@ -1,6 +1,6 @@
-import ErrorServer from "./ErrorServer.js"
+import ServerError from "./ServerError.js"
 
-class NaoEncontrado extends ErrorServer {
+class NaoEncontrado extends ServerError {
   constructor() {
     super("Página não encontrada", 404)
   }

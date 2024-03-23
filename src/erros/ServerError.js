@@ -1,4 +1,4 @@
-class ErrorServer extends Error {
+class ServerError extends Error {
   constructor(message = "Erro no Servidor", status = 500) {
     super()
     this.message = message
@@ -11,4 +11,4 @@ class ErrorServer extends Error {
 
 }
 
-export default ErrorServer
+export default ServerError
