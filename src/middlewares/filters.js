@@ -1,10 +1,11 @@
 async function filters(req, res, next) {
   try {
-    let { limit = 5, page = 1, orderBy = "_id", order = "desc" } = req.query
-
-    parseInt(limit)
-    parseInt(page)
-    order = (order.toLowerCase() == 'asc') ? 1 : -1
+    let {
+      limit,
+      page,
+      orderBy,
+      order
+    } = req.query    
 
     const content = [
       {
@@ -16,7 +17,7 @@ async function filters(req, res, next) {
       },
       {
         meta: [
-          { limit, page }
+          { limit, page, orderBy, order }
         ]
       }
     ]
