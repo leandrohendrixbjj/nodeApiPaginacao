@@ -10,7 +10,6 @@ export default (req, res, next) => {
   req.query.page = setData(page)
   req.query.orderBy = setOrderBy(req, orderBy)
   req.query.order = setOrder(order)
-
   next()
 }
 

@@ -4,12 +4,12 @@ export default async (req, res, next) => {
       limit,
       page,
       orderBy,
-      order
+      order      
     } = req.query
 
     const content = [
       {
-        data: await req.result.find()
+        data: await req.result.find(req.filters, {}).populate('autor')
           .sort({ [orderBy]: order })
           .skip((page - 1) * limit)
           .limit(limit)
