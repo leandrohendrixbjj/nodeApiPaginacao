@@ -1,5 +1,5 @@
 console.clear()
-import "dotenv/config.js"
+
 import './src/config/validateConnection.js'
 import app from "./src/app.js"
 
